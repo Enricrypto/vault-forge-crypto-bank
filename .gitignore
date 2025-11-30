@@ -1,0 +1,25 @@
+# Foundry
+cache/
+out/
+broadcast/
+
+# IDE
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.*
+
+# Dependencies
+lib/
+
+# Coverage
+coverage/
+lcov.info
+
+# Misc
+*.swp
+*.swo
+*~
+.DS_Store
