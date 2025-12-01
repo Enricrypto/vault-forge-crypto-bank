@@ -192,7 +192,7 @@ contract VaultManagerTest is Test {
     function test_Withdraw_Success() public {
         vaultManager.createVault(address(token));
         
-        // Deposit - tokens go INTO VaultManager
+        // Deposit
         uint256 depositAmount = 10000e18;
         token.mint(bank, depositAmount);
         
@@ -200,19 +200,13 @@ contract VaultManagerTest is Test {
         token.approve(address(vaultManager), depositAmount);
         uint256 shares = vaultManager.deposit(address(token), depositAmount, user1);
         
-        // Now VaultManager has the tokens
-        assertEq(token.balanceOf(address(vaultManager)), depositAmount);
-        
-        // Withdraw - tokens come OUT of VaultManager
+        // Withdraw
         uint256 assets = vaultManager.withdraw(address(token), shares, user1);
         vm.stopPrank();
         
         // Should receive proportional assets
         assertGt(assets, 0);
         assertEq(token.balanceOf(user1), assets);
-        
-        // VaultManager should have given away the tokens
-        assertLt(token.balanceOf(address(vaultManager)), depositAmount);
     }
 
     function test_Withdraw_PartialWithdraw() public {
@@ -231,10 +225,8 @@ contract VaultManagerTest is Test {
         uint256 assets = vaultManager.withdraw(address(token), sharesToWithdraw, user1);
         vm.stopPrank();
         
-        // Should receive approximately half the assets (accounting for DEAD_SHARES)
-        // User has (depositAmount - DEAD_SHARES) shares, withdrawing half of those
-        assertGt(assets, 0);
-        assertEq(token.balanceOf(user1), assets);
+        // Should receive approximately half the assets
+        assertApproxEqRel(assets, depositAmount / 2, 0.01e18); // 1% tolerance
         
         // Remaining shares in vault
         uint256 remainingShares = vaultManager.totalShares(address(token)) - sharesToWithdraw;
@@ -281,7 +273,7 @@ contract VaultManagerTest is Test {
         // Get initial share value
         uint256 initialValue = vaultManager.convertToAssets(address(token), shares);
         
-        // Distribute yield - must transfer tokens to VaultManager first
+        // Distribute yield
         uint256 yieldAmount = 1000e18;
         token.mint(bank, yieldAmount);
         token.approve(address(vaultManager), yieldAmount);

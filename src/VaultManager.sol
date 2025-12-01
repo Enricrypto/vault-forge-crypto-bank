@@ -49,7 +49,7 @@ contract VaultManager is IVaultManager, ReentrancyGuard, Ownable {
     address public immutable BANK;
 
     /**
-     * @notice Dead shares minted on first deposit to prevent inflation attack
+     * @notice Dead shares minted on first deposit to prevent "inflation attack"
      * @dev First depositor receives (shares - DEAD_SHARES), rest are burned to address(0)
      */
     uint256 private constant DEAD_SHARES = 1000;
@@ -58,7 +58,7 @@ contract VaultManager is IVaultManager, ReentrancyGuard, Ownable {
      * @notice Minimum assets required for first deposit
      * @dev Prevents dust deposits and first depositor attack
      */
-    uint256 private constant MIN_FIRST_DEPOSIT = 1e6;
+    uint256 private constant MIN_FIRST_DEPOSIT = 1e6; // 1,000,000
 
     // ==================== Modifiers ====================
 
@@ -128,14 +128,14 @@ contract VaultManager is IVaultManager, ReentrancyGuard, Ownable {
             // First deposit - mint DEAD_SHARES to prevent inflation attack
             if (assets < MIN_FIRST_DEPOSIT) revert Errors.InvalidAmount();
             
-            shares = assets;
+            shares = assets; // shares = 10000e18
             
             // Burn DEAD_SHARES to address(0)
             vault.totalShares = DEAD_SHARES;
             shareBalances[token][address(0)] = DEAD_SHARES;
             
             // User receives (shares - DEAD_SHARES)
-            shares = assets - DEAD_SHARES;
+            shares = assets - DEAD_SHARES; // shares = 10000e18 - 1000
         } else {
             // Subsequent deposits - calculate proportional shares
             // shares = (assets * totalShares) / totalAssets
@@ -144,6 +144,9 @@ contract VaultManager is IVaultManager, ReentrancyGuard, Ownable {
             
             if (shares == 0) revert Errors.InvalidAmount();
         }
+
+        // Transfer assets from Bank to vault
+        IERC20(token).safeTransferFrom(msg.sender, address(this), assets);
 
         // Update state
         vault.totalAssets += assets;

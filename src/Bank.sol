@@ -120,10 +120,13 @@ contract Bank is IBank, ReentrancyGuard, Ownable, Pausable {
         }
 
         // ========== INTERACTIONS ==========
-        // Transfer tokens from user to VAULT_MANAGER
-        IERC20(token).safeTransferFrom(msg.sender, address(VAULT_MANAGER), amount);
+        // Transfer tokens from user to Bank
+        IERC20(token).safeTransferFrom(msg.sender, address(this), amount);
 
-        // Mint shares in vault
+        // Approve VaultManager to pull tokens
+        IERC20(token).approve(address(VAULT_MANAGER), amount);
+
+        // Mint shares in vault (VaultManager will pull tokens from Bank)
         uint256 shares = VAULT_MANAGER.deposit(token, amount, msg.sender);
 
         // Store position
