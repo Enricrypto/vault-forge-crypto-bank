@@ -275,7 +275,7 @@ This code is provided as-is for educational and portfolio purposes. It has not b
 
 Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
 
-Project Link: [https://github.com/yourusername/vault-forge-crypto-bank](https://github.com/enricrypto/vault-forge-crypto-bank)
+Project Link: [https://github.com/yourusername/vault-forge-crypto-bank](https://github.com/Enricrypto/vault-forge-crypto-bank)
 
 ---
 
