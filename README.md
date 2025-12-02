@@ -7,7 +7,6 @@ A multi-token crypto savings protocol with tiered lock periods, dynamic yields, 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
 [![Tests](https://img.shields.io/badge/Tests-131%20Passing-brightgreen?style=flat-square)](https://github.com/Enricrypto/vault-forge-crypto-bank/test)
 
-
 ## 🌟 Overview
 
 VaultForge is a sophisticated DeFi savings protocol that allows users to deposit ERC20 tokens with varying lock periods in exchange for tiered APY rewards. The protocol implements advanced security patterns, economic incentives, and a share-based accounting system inspired by ERC4626.
