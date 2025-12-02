@@ -1,4 +1,4 @@
-## 🏦 VaultForge - Multi-Token Crypto Savings Bank
+# 🏦 VaultForge - Multi-Token Crypto Savings Bank
 
 A multi-token crypto savings protocol with tiered lock periods, dynamic yields, and penalty-based incentives.
 
