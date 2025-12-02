@@ -1,10 +1,10 @@
-# 🏦 VaultForge - Multi-Token Crypto Savings Bank
+🏦 VaultForge - Multi-Token Crypto Savings Bank
 
-A production-ready Solidity protocol implementing a multi-token savings bank with tiered lock periods, dynamic yields, and penalty-based incentives.
+A multi-token crypto savings protocol with tiered lock periods, dynamic yields, and penalty-based incentives.
 
-[![Solidity](https://img.shields.io/badge/Solidity-0.8.30-363636?style=flat-square&logo=solidity)](https://soliditylang.org/)
-[![Foundry](https://img.shields.io/badge/Foundry-✓-blue?style=flat-square)](https://getfoundry.sh/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Solidity](https://img.shields.io/badge/Solidity-^0.8.20-363636?style=flat-square)]
+[![Foundry](https://img.shields.io/badge/Tested%20With-Foundry-red?style=flat-square)]
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)]
 [![Tests](https://img.shields.io/badge/Tests-131%20Passing-brightgreen?style=flat-square)]()
 
 ## 🌟 Overview
