@@ -127,7 +127,7 @@ foundryup
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/vault-forge-crypto-bank.git
+git clone https://github.com/Enricrypto/vault-forge-crypto-bank.git
 cd vault-forge-crypto-bank
 
 # Install dependencies
